@@ -1,0 +1,512 @@
+data.frame() %>% setNames(c("x", "y"))
+set.seed(1)
+rmse <- replicate(100, {
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+})
+mean(rmse)
+sd(rmse)
+set.seed(1)
+n <- 1000
+Sigma <- 9*matrix(c(1.0, 0.5, 0.5, 1.0), 2, 2)
+dat <- MASS::mvrnorm(n = 100, c(69, 69), Sigma) %>%
+data.frame() %>% setNames(c("x", "y"))
+set.seed(1)
+n <- 1000
+Sigma <- 9*matrix(c(1.0, 0.5, 0.5, 1.0), 2, 2)
+dat <- MASS::mvrnorm(n = 1000, c(69, 69), Sigma) %>%
+data.frame() %>% setNames(c("x", "y"))
+set.seed(1)
+rmse <- replicate(100, {
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+})
+mean(rmse)
+sd(rmse)
+set.seed(1)
+n <- c(100, 500, 1000, 5000, 10000)
+res <- sapply(n, function(n){
+Sigma <- 9*matrix(c(1.0, 0.5, 0.5, 1.0), 2, 2)
+dat <- MASS::mvrnorm(n, c(69, 69), Sigma) %>%
+data.frame() %>% setNames(c("x", "y"))
+rmse <- replicate(100, {
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+})
+c(avg = mean(rmse), sd = sd(rmse))
+})
+res
+set.seed(1)
+n <- c(100, 500, 1000, 5000, 10000)
+res <- sapply(n, function(n){
+Sigma <- 9*matrix(c(1.0, 0.5, 0.5, 1.0), 2, 2)
+dat <- MASS::mvrnorm(n, c(69, 69), Sigma) %>%
+data.frame() %>% setNames(c("x", "y"))
+rmse <- replicate(100, {
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+})
+c(avg = mean(rmse), sd = sd(rmse))
+})
+res
+set.seed(1)
+n <- 100
+Sigma <- 9*matrix(c(1.0, 0.95, 0.95, 1.0), 2, 2)
+dat <- MASS::mvrnorm(n = 100, c(69, 69), Sigma) %>%
+data.frame() %>% setNames(c("x", "y"))
+#Q1
+set.seed(1)
+rmse <- replicate(100, {
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+})
+mean(rmse)
+sd(rmse)
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+mean(rmse)
+sd(rmse))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+mean(rmse)
+sd(rmse)
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+rmse
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+rmse
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+rmse
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+rmse
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1+x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+rmse <- sqrt(mean((y_hat-test_set$y)^2))
+rmse
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.95, 0.75, 0.95, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+set.seed(1)
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+fit <- lm(y ~ x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+fit <- lm(y ~ x_1 + x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+set.seed(1)
+n <- 1000
+Sigma <- matrix(c(1.0, 0.75, 0.75, 0.75, 1.0, 0.25, 0.75, 0.25, 1.0), 3, 3)
+dat <- MASS::mvrnorm(n = 100, c(0, 0, 0), Sigma) %>%
+data.frame() %>% setNames(c("y", "x_1", "x_2"))
+set.seed(1)
+test_index <- createDataPartition(dat$y, times = 1, p = 0.5, list = FALSE)
+train_set <- dat %>% slice(-test_index)
+test_set <- dat %>% slice(test_index)
+fit <- lm(y ~ x_1, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+fit <- lm(y ~ x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+fit <- lm(y ~ x_1 + x_2, data = train_set)
+y_hat <- predict(fit, newdata = test_set)
+sqrt(mean((y_hat-test_set$y)^2))
+library(tidyverse)
+library(purrr)
+library(pdftools)
+fn <- system.file("extdata", "RD-Mortality-Report_2015-18-180531.pdf", package="dslabs")
+dat <- map_df(str_split(pdf_text(fn), "\n"), function(s){
+s <- str_trim(s)
+header_index <- str_which(s, "2015")[1]
+tmp <- str_split(s[header_index], "\\s+", simplify = TRUE)
+month <- tmp[1]
+header <- tmp[-1]
+tail_index  <- str_which(s, "Total")
+n <- str_count(s, "\\d+")
+out <- c(1:header_index, which(n==1), which(n>=28), tail_index:length(s))
+s[-out] %>%
+str_remove_all("[^\\d\\s]") %>%
+str_trim() %>%
+str_split_fixed("\\s+", n = 6) %>%
+.[,1:5] %>%
+as_data_frame() %>%
+setNames(c("day", header)) %>%
+mutate(month = month,
+day = as.numeric(day)) %>%
+gather(year, deaths, -c(day, month)) %>%
+mutate(deaths = as.numeric(deaths))
+}) %>%
+mutate(month = recode(month, "JAN" = 1, "FEB" = 2, "MAR" = 3, "APR" = 4, "MAY" = 5, "JUN" = 6,
+"JUL" = 7, "AGO" = 8, "SEP" = 9, "OCT" = 10, "NOV" = 11, "DEC" = 12)) %>%
+mutate(date = make_date(year, month, day)) %>%
+filter(date <= "2018-05-01")
+install.packages("pdftools")
+library(tidyverse)
+library(purrr)
+library(pdftools)
+fn <- system.file("extdata", "RD-Mortality-Report_2015-18-180531.pdf", package="dslabs")
+dat <- map_df(str_split(pdf_text(fn), "\n"), function(s){
+s <- str_trim(s)
+header_index <- str_which(s, "2015")[1]
+tmp <- str_split(s[header_index], "\\s+", simplify = TRUE)
+month <- tmp[1]
+header <- tmp[-1]
+tail_index  <- str_which(s, "Total")
+n <- str_count(s, "\\d+")
+out <- c(1:header_index, which(n==1), which(n>=28), tail_index:length(s))
+s[-out] %>%
+str_remove_all("[^\\d\\s]") %>%
+str_trim() %>%
+str_split_fixed("\\s+", n = 6) %>%
+.[,1:5] %>%
+as_data_frame() %>%
+setNames(c("day", header)) %>%
+mutate(month = month,
+day = as.numeric(day)) %>%
+gather(year, deaths, -c(day, month)) %>%
+mutate(deaths = as.numeric(deaths))
+}) %>%
+mutate(month = recode(month, "JAN" = 1, "FEB" = 2, "MAR" = 3, "APR" = 4, "MAY" = 5, "JUN" = 6,
+"JUL" = 7, "AGO" = 8, "SEP" = 9, "OCT" = 10, "NOV" = 11, "DEC" = 12)) %>%
+mutate(date = make_date(year, month, day)) %>%
+filter(date <= "2018-05-01")
+library(purrr)
+install.packages("purrr")
+install.packages("purrr")
+library(tidyverse)
+library(purrr)
+library(pdftools)
+fn <- system.file("extdata", "RD-Mortality-Report_2015-18-180531.pdf", package="dslabs")
+dat <- map_df(str_split(pdf_text(fn), "\n"), function(s){
+s <- str_trim(s)
+header_index <- str_which(s, "2015")[1]
+tmp <- str_split(s[header_index], "\\s+", simplify = TRUE)
+month <- tmp[1]
+header <- tmp[-1]
+tail_index  <- str_which(s, "Total")
+n <- str_count(s, "\\d+")
+out <- c(1:header_index, which(n==1), which(n>=28), tail_index:length(s))
+s[-out] %>%
+str_remove_all("[^\\d\\s]") %>%
+str_trim() %>%
+str_split_fixed("\\s+", n = 6) %>%
+.[,1:5] %>%
+as_data_frame() %>%
+setNames(c("day", header)) %>%
+mutate(month = month,
+day = as.numeric(day)) %>%
+gather(year, deaths, -c(day, month)) %>%
+mutate(deaths = as.numeric(deaths))
+}) %>%
+mutate(month = recode(month, "JAN" = 1, "FEB" = 2, "MAR" = 3, "APR" = 4, "MAY" = 5, "JUN" = 6,
+"JUL" = 7, "AGO" = 8, "SEP" = 9, "OCT" = 10, "NOV" = 11, "DEC" = 12)) %>%
+mutate(date = make_date(year, month, day)) %>%
+filter(date <= "2018-05-01")
+library(lubridate)
+fn <- system.file("extdata", "RD-Mortality-Report_2015-18-180531.pdf", package="dslabs")
+dat <- map_df(str_split(pdf_text(fn), "\n"), function(s){
+s <- str_trim(s)
+header_index <- str_which(s, "2015")[1]
+tmp <- str_split(s[header_index], "\\s+", simplify = TRUE)
+month <- tmp[1]
+header <- tmp[-1]
+tail_index  <- str_which(s, "Total")
+n <- str_count(s, "\\d+")
+out <- c(1:header_index, which(n==1), which(n>=28), tail_index:length(s))
+s[-out] %>%
+str_remove_all("[^\\d\\s]") %>%
+str_trim() %>%
+str_split_fixed("\\s+", n = 6) %>%
+.[,1:5] %>%
+as_data_frame() %>%
+setNames(c("day", header)) %>%
+mutate(month = month,
+day = as.numeric(day)) %>%
+gather(year, deaths, -c(day, month)) %>%
+mutate(deaths = as.numeric(deaths))
+}) %>%
+mutate(month = recode(month, "JAN" = 1, "FEB" = 2, "MAR" = 3, "APR" = 4, "MAY" = 5, "JUN" = 6,
+"JUL" = 7, "AGO" = 8, "SEP" = 9, "OCT" = 10, "NOV" = 11, "DEC" = 12)) %>%
+mutate(date = make_date(year, month, day)) %>%
+filter(date <= "2018-05-01")
+dat
+total_days <- diff(range(dat$day))
+span <- 60/total_days
+fit <- loess(deaths ~ day, degree=1, span = span, data=dat)
+dat %>% mutate(smooth = fit$fitted) %>%
+ggplot(aes(day, deaths)) +
+geom_point(size = 3, alpha = .5, color = "grey") +
+geom_line(aes(day, smooth), color="red")
+total_days
+data("polls_2008")
+library(dslabs)
+data("polls_2008")
+polls_2008$day
+polls_2008
+total_days <- diff(range(dat$day))
+span <- 60/total_days
+total_days
+fit <- loess(deaths ~ day, degree=1, span = span, data=dat)
+fit
+total_days <- diff(range(dat$date))
+span <- 60/total_days
+(range(dat$date)
+a
+range(dat$date)
+total_days <- range(dat$date)
+date <- dmy(total_days)
+days <- yday(date) - 1 # so Jan 1 = day 0
+total_days <- cumsum(days)
+total_days <- difftime(range(dat$date),units = c("days"))
+d <- range(dat$date)
+d
+d[1]
+total_days <- difftime(d[1], d[2],units = c("days"))
+total_days
+total_days <- difftime(d[2], d[1],units = c("days"))
+total_days
+span <- 60/total_days
+total_days <- as.numeric(difftime(d[2], d[1],units = c("days")))
+span <- 60/total_days
+fit <- loess(deaths ~ day, degree=1, span = span, data=dat)
+fit
+dat %>% mutate(smooth = fit$fitted) %>%
+ggplot(aes(day, deaths)) +
+geom_point(size = 3, alpha = .5, color = "grey") +
+geom_line(aes(day, smooth), color="red")
+fit
+span
+fit <- loess(deaths ~ day, degree=1, span = span, data=dat)
+fit
+dat %>% mutate(smooth = fit$fitted) %>%
+ggplot(aes(day, deaths)) +
+geom_point(size = 3, alpha = .5, color = "grey") +
+geom_line(aes(day, smooth), color="red")
+span <- 60 / as.numeric(diff(range(dat$date)))
+fit <- dat %>% mutate(x = as.numeric(date)) %>% loess(deaths ~ x, data = ., span = span, degree = 1)
+dat %>% mutate(smooth = predict(fit, as.numeric(date))) %>%
+ggplot() +
+geom_point(aes(date, deaths)) +
+geom_line(aes(date, smooth), lwd = 2, col = 2)
+dat %>%
+mutate(smooth = predict(fit, as.numeric(date)), day = yday(date), year = as.character(year(date))) %>%
+ggplot(aes(day, smooth, col = year)) +
+geom_line(lwd = 2)
+x <- matrix(rnorm(100*10), 100, 10)
+x
+dim(x)
+nrow(x)
+ncol(x)
+x <- sweep(x, 1, 1:nrow(x),"+")
+x
+x <- matrix(rnorm(100*10), 100, 10)
+x
+x <- sweep(x, 1, 1:nrow(x),"+")
+x
+setwd("~/Documents/Documents/Study/Courses/7th sem/CSC 3303 BIG DATA ANALYTICS/Project")
+library(tidyverse)
+library(dplyr)
+library(caret)
+library(rpart)
+library(rpart.plot)
+library(caTools)
+library(tree)
+library(hms)
+library(party)
+library(gbm)
+library(ggplot2)
+library(plyr)
+#reading the flights dataset
+dataset <- read.csv("flights.csv")
+airline <- read.csv("airlines.csv")
+airport <- read.csv("airports.csv")
+#deducting all rows which have the records of cancellation and diversion
+dataset <- dataset %>% filter(CANCELLED == 0) %>% filter(DIVERTED == 0)
+#adding new column of delay result
+dataset <- mutate(dataset, DELAY_RESULT = ARRIVAL_DELAY)
+#categorizing delay result from numeric to yes or no
+dataset$DELAY_RESULT <-ifelse(dataset$DELAY_RESULT<15, "No", "Yes")
+#converting delay result to factor
+dataset$DELAY_RESULT <- as.factor(dataset$DELAY_RESULT)
+#explore dataset
+head(dataset$DELAY_RESULT)
+names(dataset)
+class(dataset$DELAY_RESULT)
+typeof(dataset$DELAY_RESULT)
+prop.table(table(dataset$DELAY_RESULT))
+nrow(dataset)
+#selecting necessary features only
+dataset <- dataset %>% select("MONTH", "AIRLINE", "DAY_OF_WEEK", "FLIGHT_NUMBER",
+"ORIGIN_AIRPORT", "DESTINATION_AIRPORT", "SCHEDULED_DEPARTURE", "DELAY_RESULT")
+#checking dataset
+head(dataset)
+head(airline)
+head(airport)
+#changing column airline's value
+colnames(dataset)[colnames(dataset) == "AIRLINE"] <- "IATA_CODE"
+dataset <- merge(dataset, airline, by.x="IATA_CODE", by.y="IATA_CODE")
+dataset <- dataset %>% select(- "IATA_CODE")
+#changing column origin_airport's value
+colnames(dataset)[colnames(dataset) == "ORIGIN_AIRPORT"] <- "IATA_CODE"
+dataset <- merge(dataset, airport, by.x="IATA_CODE", by.y="IATA_CODE")
+dataset <- dataset %>% select(- c("IATA_CODE", "CITY", "STATE", "COUNTRY", "LATITUDE", "LONGITUDE"))
+colnames(dataset)[colnames(dataset) == "AIRPORT"] <- "ORIGIN_AIRPORT"
+#changing column DESTINATION_AIRPORT's value
+colnames(dataset)[colnames(dataset) == "DESTINATION_AIRPORT"] <- "IATA_CODE"
+dataset <- merge(dataset, airport, by.x="IATA_CODE", by.y="IATA_CODE")
+dataset <- dataset %>% select(- c("IATA_CODE", "CITY", "STATE", "COUNTRY", "LATITUDE", "LONGITUDE"))
+colnames(dataset)[colnames(dataset) == "AIRPORT"] <- "DESTINATION_AIRPORT"
+counts <- table(dataset$AIRLINE)/1000
+barplot(counts, main="Airline Distribution",
+ylab="Number of Filghts(in thousands)", las=2, cex.names=.5)
+pal <- colorRampPalette(colors = c("lightblue", "blue"))(3)
+counts <- table(dataset$MONTH)/1000
+barplot(counts, main="No. of Flights(Monthly)", col = pal,
+ylab="Number of Filghts(in thousands)", las=1, cex.names=.5)
+pal <- colorRampPalette(colors = c("lightgreen", "green"))(3)
+counts <- table(dataset$DAY_OF_WEEK)/1000
+barplot(counts, main="No. of Flights(Daily)", col = pal,ylim=c(0,800),
+ylab="Number of Filghts(in thousands)", las=1, cex.names=.5)
+w <- table(dataset$DAY_OF_WEEK)
+t = as.data.frame(w)
+n <- list("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+t$Freq <- t$Freq/5231130
+t <- mutate(t, D = n)
+# Create a basic bar
+pie = ggplot(t, aes(x="", y=Freq, fill=Var1)) + geom_bar(stat="identity", width=1)
+# Convert to pie (polar coordinates) and add labels
+pie = pie + coord_polar("y", start=0) + geom_text(aes(label = paste0(round(t$Freq*100), "%")), position = position_stack(vjust = 0.5))
+# Add color scale (hex colors)
+#pie = pie + scale_fill_manual(values=c("#55DDE0", "#33658A", "#2F4858", "#F6AE2D", "#F26419", "#999999", "#999999"))
+# Remove labels and add title
+pie = pie + labs(x = NULL, y = NULL, fill = NULL, title = "")
+# Tidy up the theme
+pie = pie + theme_classic() + theme(axis.line = element_blank(),
+axis.text = element_blank(),
+axis.ticks = element_blank(),
+plot.title = element_text(hjust = 0.5, color = "#666666"))
+pie
+pie
+t$D <- as.factor(t$D)
+df = data.frame("N" = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+"V" = t$Freq)
+df
+# Create a basic bar
+pie = ggplot(df, aes(x="", y=V, fill=N)) + geom_bar(stat="identity", width=1)
+# Convert to pie (polar coordinates) and add labels
+pie = pie + coord_polar("y", start=0) + geom_text(aes(label = paste0(round(t$Freq*100), "%")), position = position_stack(vjust = 0.5))
+# Remove labels and add title
+pie = pie + labs(x = NULL, y = NULL, fill = NULL, title = "")
+# Tidy up the theme
+pie = pie + theme_classic() + theme(axis.line = element_blank(),
+axis.text = element_blank(),
+axis.ticks = element_blank(),
+plot.title = element_text(hjust = 0.5, color = "#666666"))
+pie
+# Create a basic bar
+pie = ggplot(t, aes(x="", y=Freq, fill=Var1)) + geom_bar(stat="identity", width=1)
+# Convert to pie (polar coordinates) and add labels
+pie = pie + coord_polar("y", start=0) + geom_text(aes(label = paste0(round(t$Freq*100), "%")), position = position_stack(vjust = 0.5))
+# Remove labels and add title
+pie = pie + labs(x = NULL, y = NULL, fill = NULL, title = "")
+# Tidy up the theme
+pie = pie + theme_classic() + theme(axis.line = element_blank(),
+axis.text = element_blank(),
+axis.ticks = element_blank(),
+plot.title = element_text(hjust = 0.5, color = "#666666"))
+pie
+# Create a basic bar
+pie = ggplot(t, aes(x="", y=Freq, fill=Var1)) + geom_bar(stat="identity", width=1)
+# Convert to pie (polar coordinates) and add labels
+pie = pie + coord_polar("y", start=0) + geom_text(aes(label = paste0(round(t$Freq*100), "%")), position = position_stack(vjust = 0.5))
+# Remove labels and add title
+pie = pie + labs(x = NULL, y = NULL, fill = NULL, title = "Percentage of Flights (Daily)")
+# Tidy up the theme
+pie = pie + theme_classic() + theme(axis.line = element_blank(),
+axis.text = element_blank(),
+axis.ticks = element_blank(),
+plot.title = element_text(hjust = 0.5, color = "#666666"))
+pie
